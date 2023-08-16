@@ -1,8 +1,7 @@
 function Home() {
   return (
     <div>
-      <h1>Vai estudar javascript João 😡</h1>
-      <h3>Assinado: Ronaldo</h3>
+      <h1>bora jogar brawl stars</h1>
     </div>
   );
 }
