@@ -1,9 +1,15 @@
-import database from "infra/database.js";
+import database from "infra/database";
 
 export default async function status(request, response) {
-  const result = await database.query("SELECT 1+1 AS sum;");
-  console.log(result.rows);
+  const postgresVersion = (await database.query("SHOW server_version")).rows[0]
+    .server_version;
+
   response.status(200).json({
-    chave: "valor",
+    updated_at: new Date().toISOString(),
+    dependencies: {
+      database: {
+        version: postgresVersion,
+      },
+    },
   });
 }
